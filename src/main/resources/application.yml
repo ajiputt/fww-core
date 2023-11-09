@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: fww-core
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fww-core
+    username: root
+    password:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+app:
+  username: application
+  password: Testing123
