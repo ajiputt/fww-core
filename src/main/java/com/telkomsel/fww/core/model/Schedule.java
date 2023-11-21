@@ -1,8 +1,9 @@
 package com.telkomsel.fww.core.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Where;
 
 import java.math.BigDecimal;
@@ -10,8 +11,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "schedules")
 public class Schedule {
