@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SecurityConfigTest {
@@ -18,7 +19,11 @@ class SecurityConfigTest {
     @Mock
     private AuthEntryPoint unauthorizedHandler;
 
+    @Mock
+    private HttpSecurity httpSecurity;
+
     SecurityConfig securityConfig;
+
 
     @BeforeEach
     void init() {
@@ -27,23 +32,25 @@ class SecurityConfigTest {
 
 
     @Test
-    void filterChain() {
+    void filterChain() throws Exception {
+        when(httpSecurity.csrf(any())).thenReturn(httpSecurity);
+        when(httpSecurity.exceptionHandling(any())).thenReturn(httpSecurity);
+        when(httpSecurity.sessionManagement(any())).thenReturn(httpSecurity);
+        securityConfig.filterChain(httpSecurity);
         org.junit.jupiter.api.Assertions.assertTrue(true, "ok");
     }
 
     @Test
     void passwordEncoder() {
-        PasswordEncoder resp = new BCryptPasswordEncoder();
+        PasswordEncoder resp = securityConfig.passwordEncoder();
         Assertions.assertThat(resp).isNotNull();
     }
 
     @Test
     void userDetailsService() {
-        UserDetails user = User.withUsername("test")
-                .password(new BCryptPasswordEncoder().encode("test"))
-                .roles("ADMIN")
-                .build();
-        InMemoryUserDetailsManager resp = new InMemoryUserDetailsManager(user);
+        securityConfig.setUsername("test");
+        securityConfig.setPassword("test");
+        InMemoryUserDetailsManager resp = securityConfig.userDetailsService();
         Assertions.assertThat(resp).isNotNull();
     }
 }

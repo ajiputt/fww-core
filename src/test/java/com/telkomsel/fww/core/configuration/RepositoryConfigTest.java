@@ -1,9 +1,5 @@
 package com.telkomsel.fww.core.configuration;
 
-import com.telkomsel.fww.core.model.Airport;
-import com.telkomsel.fww.core.model.Schedule;
-import com.telkomsel.fww.core.projection.ReservationView;
-import com.telkomsel.fww.core.projection.ScheduleView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,11 +9,16 @@ import org.springframework.data.rest.core.config.EnumTranslationConfiguration;
 import org.springframework.data.rest.core.config.MetadataConfiguration;
 import org.springframework.data.rest.core.config.ProjectionDefinitionConfiguration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @ExtendWith(MockitoExtension.class)
 class RepositoryConfigTest {
 
     private RepositoryRestConfiguration config;
+
+    private CorsRegistry cors;
+
+    RepositoryConfig repositoryConfig;
 
     @Mock
     ProjectionDefinitionConfiguration projectionConfiguration;
@@ -30,16 +31,15 @@ class RepositoryConfigTest {
 
     @BeforeEach
     void init() {
+        repositoryConfig = new RepositoryConfig();
         config = new RepositoryRestConfiguration(projectionConfiguration,
                 metadataConfiguration, enumTranslationConfiguration);
+        cors = new CorsRegistry();
     }
 
     @Test
     void configureRepositoryRestConfiguration() {
-        config.exposeIdsFor(Schedule.class);
-        config.exposeIdsFor(Airport.class);
-
-        config.getProjectionConfiguration().addProjection(ScheduleView.class);
-        config.getProjectionConfiguration().addProjection(ReservationView.class);
+        repositoryConfig.configureRepositoryRestConfiguration(config, cors);
+        org.junit.jupiter.api.Assertions.assertTrue(true, "ok");
     }
 }
