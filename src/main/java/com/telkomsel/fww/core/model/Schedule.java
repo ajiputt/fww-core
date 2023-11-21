@@ -1,20 +1,17 @@
 package com.telkomsel.fww.core.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Where;
-import org.hibernate.sql.ast.Clause;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "schedules")
 public class Schedule {
@@ -32,7 +29,7 @@ public class Schedule {
 
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "planes_code")
     private Plane plane;
 
@@ -45,7 +42,7 @@ public class Schedule {
     private Airport airportArrival;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "scheduleAvailable")
-    @Where(clause = "status = 'F'")
+    @Where(clause = "status = 'A'")
     private List<ScheduleSeats> availableSeats;
 
 }

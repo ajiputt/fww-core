@@ -2,6 +2,7 @@ package com.telkomsel.fww.core.configuration;
 
 import com.telkomsel.fww.core.model.Airport;
 import com.telkomsel.fww.core.model.Schedule;
+import com.telkomsel.fww.core.projection.ReservationView;
 import com.telkomsel.fww.core.projection.ScheduleView;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -18,6 +19,7 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(Airport.class);
 
         config.getProjectionConfiguration().addProjection(ScheduleView.class);
+        config.getProjectionConfiguration().addProjection(ReservationView.class);
     }
 
 }

@@ -23,7 +23,7 @@ public class Member {
 
     private String firstName;
 
-    private String LastName;
+    private String lastName;
 
     private String email;
 

@@ -20,6 +20,6 @@ public class Plane {
 
     private String name;
 
-    private Integer numberOfSeats;
+    private Integer noOfSeats;
 
 }
