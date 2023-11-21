@@ -6,7 +6,7 @@ spring:
     name: fww-core
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/fww
+    url: jdbc:postgresql://43.218.117.163:5432/fww
     username: user-fww
     password: fww123
   jackson:
