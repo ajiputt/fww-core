@@ -12,7 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AuthEntryPointTest {
@@ -34,5 +34,4 @@ class AuthEntryPointTest {
 
         assertEquals(HttpServletResponse.SC_UNAUTHORIZED, response.getStatus());
     }
-
 }

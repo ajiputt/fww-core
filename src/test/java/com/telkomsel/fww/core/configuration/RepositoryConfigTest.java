@@ -15,8 +15,7 @@ import org.springframework.data.rest.core.config.ProjectionDefinitionConfigurati
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 @ExtendWith(MockitoExtension.class)
-public class RepositoryConfigTest {
-
+class RepositoryConfigTest {
 
     private RepositoryRestConfiguration config;
 
@@ -35,9 +34,8 @@ public class RepositoryConfigTest {
                 metadataConfiguration, enumTranslationConfiguration);
     }
 
-
     @Test
-    public void configureRepositoryRestConfiguration() {
+    void configureRepositoryRestConfiguration() {
         config.exposeIdsFor(Schedule.class);
         config.exposeIdsFor(Airport.class);
 
