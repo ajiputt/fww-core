@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: fww-core
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://database:5432/fww
+    username: user-fww
+    password: fww123
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  jpa:
+    properties:
+      hibernate:
+        default_schema: fww
+    show-sql: true
+  hateoas:
+    use-hal-as-default-json-media-type: false
+app:
+  username: application
+  password: Testing123
