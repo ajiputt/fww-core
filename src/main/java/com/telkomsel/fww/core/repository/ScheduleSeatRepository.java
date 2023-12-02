@@ -10,4 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface ScheduleSeatRepository extends PagingAndSortingRepository<ScheduleSeats
         , Integer>, CrudRepository<ScheduleSeats, Integer> {
 
+    ScheduleSeats findByScheduleAvailableCodeAndSeatNo(String scheduleCode,
+                                                       Integer seatNo);
+
 }

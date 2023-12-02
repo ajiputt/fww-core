@@ -17,9 +17,11 @@ import java.math.BigDecimal;
 public class Baggage {
 
     @Id
-    private String id;
+    private String code;
 
-    private String reservationCode;
+    private String bookingCode;
 
     private BigDecimal weight;
+
+    private String description;
 }

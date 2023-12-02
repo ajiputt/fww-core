@@ -13,4 +13,6 @@ public interface ScheduleRepository extends PagingAndSortingRepository<Schedule
         , String>, CrudRepository<Schedule, String> {
 
     List<Schedule> findByAirportDepartureCodeAndAirportArrivalCodeAndDate(String departure, String arrival, LocalDate date);
+
+    Schedule findByCode(String code);
 }

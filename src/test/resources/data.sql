@@ -33,5 +33,12 @@ INSERT INTO reservations
 VALUES ('BOOKING-001', 'TEST-0002', 2, '123444432121', 'B', 'user-test',
         CURRENT_TIMESTAMP);
 
+DELETE
+FROM schedule_seats;
+INSERT INTO schedule_seats
+    (id, schedule_code, seatNo, status)
+VALUES (1, 'TEST-0002', 1, 'A');
+
+
 
 

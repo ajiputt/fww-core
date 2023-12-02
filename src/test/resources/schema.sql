@@ -236,5 +236,22 @@ CREATE TABLE IF NOT EXISTS `schedule_seats`
 ) NOT NULL
     );
 
+CREATE TABLE IF NOT EXISTS `baggages`
+(
+    `code` varchar
+(
+    255
+) NOT NULL,
+    `booking_code` varchar
+(
+    255
+) NOT NULL,
+    `weight` double NOT NULL,
+    `description` varchar
+(
+    255
+)
+    );
+
 
 

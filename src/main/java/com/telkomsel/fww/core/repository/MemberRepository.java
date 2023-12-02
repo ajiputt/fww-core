@@ -8,4 +8,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "members", path = "members")
 public interface MemberRepository extends PagingAndSortingRepository<Member
         , String>, CrudRepository<Member, String> {
+
+    Member findByUsername(String username);
+
+    Boolean existsByUsernameOrEmail(String username, String email);
 }

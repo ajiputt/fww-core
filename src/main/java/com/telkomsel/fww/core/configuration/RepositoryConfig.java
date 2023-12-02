@@ -1,7 +1,10 @@
 package com.telkomsel.fww.core.configuration;
 
 import com.telkomsel.fww.core.model.Airport;
+import com.telkomsel.fww.core.model.Member;
+import com.telkomsel.fww.core.model.MemberToken;
 import com.telkomsel.fww.core.model.Schedule;
+import com.telkomsel.fww.core.projection.MemberView;
 import com.telkomsel.fww.core.projection.ReservationView;
 import com.telkomsel.fww.core.projection.ScheduleView;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +20,12 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
             RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(Schedule.class);
         config.exposeIdsFor(Airport.class);
+        config.exposeIdsFor(Member.class);
+        config.exposeIdsFor(MemberToken.class);
 
         config.getProjectionConfiguration().addProjection(ScheduleView.class);
         config.getProjectionConfiguration().addProjection(ReservationView.class);
+        config.getProjectionConfiguration().addProjection(MemberView.class);
     }
 
 }
