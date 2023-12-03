@@ -12,6 +12,10 @@ public interface ReservationView {
 
     String getBookingCode();
 
+    String getStatus();
+
+    Integer getSeatNo();
+
     Passenger getPassenger();
 
     Schedule getSchedule();
